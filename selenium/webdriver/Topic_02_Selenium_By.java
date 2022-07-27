@@ -93,9 +93,9 @@ public class Topic_02_Selenium_By {
 		driver.findElement(By.partialLinkText("TERMS"));
 		
 		// CSS - Cover được hết cả 6 loại trên
-		driver.findElement(By.xpath("input[name='login[username]']"));
-		driver.findElement(By.xpath("input[type='email']"));
-		driver.findElement(By.xpath("input[title='Email Address']"));
+		driver.findElement(By.cssSelector("input[name='login[username]']"));
+		driver.findElement(By.cssSelector("input[type='email']"));
+		driver.findElement(By.cssSelector("input[title='Email Address']"));
 
 		
 		// XPath
