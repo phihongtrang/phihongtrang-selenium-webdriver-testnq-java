@@ -124,6 +124,9 @@ public class Topic_07_Web_Element {
 		// Button/ Linl/ Checkbox/ Radio/ Image/ Icon
 		element.click();
 		
+		// Click lên Slider và giữ chuột
+		// Sau đó kép Slider này 1 tọa độ bao nhiêu pixel
+		// Kéo tới 1 element khác
 		action.clickAndHold(element).moveToElement(element).perform();
 		
 	}
