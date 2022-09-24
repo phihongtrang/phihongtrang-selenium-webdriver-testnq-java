@@ -20,7 +20,7 @@ public class Topic_06_Web_Browser_PII {
 		driver = new FirefoxDriver();
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+	
 	}
 
 	@Test
