@@ -28,38 +28,80 @@ public class Topic_17_Window_Tab {
 
 	@Test
 	public void TC_01_Bassic_Form() {
+		
+		// Driver đang ở trang A
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 		
-		// Vừa mở ra nó chỉ có duy nhất 1 tab
+		// Lấy ra ID của driver đang đứng tại tab/ window (active)
 		String fromTabID = driver.getWindowHandle();
 		System.out.println("From tab ID = " + fromTabID);
 		
 		driver.findElement(By.xpath("//a[text()='GOOGLE']")).click();
 		sleepInSecond(3);
 		
-		// Lúc này nó đã có 2 tab rồi
-		Set<String> allWindownIDs = driver.getWindowHandles();
-		System.out.println("From tab ID = " + allWindownIDs);
+		// Switch qua trang B
+		switchToWindowByID(fromTabID);
 		
-		// Dùng vòng lặp để duyệt qua từng ID đang có trong Set
+		// Driver đang ở trang B
+		driver.findElement(By.name("q")).sendKeys("Selenium");
+		String googleTabID = driver.getWindowHandle();
+		
+		// Quay về trang A
+		switchToWindowByID(googleTabID);
+		
+		// Driver đang ở trang A
+		driver.findElement(By.xpath("//a[text()='FACEBOOK']")).click();
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	// Chỉ dùng cho duy nhất 2 tab/ windown
+	public void switchToWindowByID(String parentID) {
+		// Lấy ra tất cả các ID của tab/ window đang có
+		Set<String> allWindownIDs = driver.getWindowHandles();
+		
+		// Dùng vòng lặp để duyệt qua từng ID
 		for (String id : allWindownIDs) {
-			if (!id.equals(fromTabID)) {
-				driver.switchTo().window(id);		
+			
+			// Nếu như có ID nào mà khác với parentID
+			if (!id.equals(parentID)) {
+				
+				// Switch vào
+				driver.switchTo().window(id);
+				sleepInSecond(3);
+				
 			}
+		}
+
+	}
+	
+	// Dùng được cho 2 hoặc nhiều hơn 2 tab/ window
+	public void switchToWindowByTitle(String expectedPageTitle) {
+		// Lấy ra tất cả các ID của tab/ window đang có
+		Set<String> allWindownIDs = driver.getWindowHandles();
+		
+		// Dùng vòng lặp để duyệt qua từng ID
+				for (String id : allWindownIDs) {
+					// Switch vào từng tab/window
+					driver.switchTo().window(id);
+		// Lấy ra Title của page đã switch vào
+		String currentPageTitle = driver.getTitle();
+		
+		if (currentPageTitle.equals(expectedPageTitle)) {
+		// Thoát khỏi vòng lặp - ko duyệt nữa
+			break;
 			
 		}
 		
+					
+					
 		
-		
-	}
-
-	@Test
-	public void TC_02_() {
-
-	}
-
-	@Test
-	public void TC_03_() {
+				}
 
 	}
 
