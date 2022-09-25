@@ -31,48 +31,71 @@ public class Topic_16_Frame_Iframe {
 	@Test
 	public void TC_01_Iframe() {
 		driver.get("https://kyna.vn/");
+
+		// A -> B
 		driver.switchTo().frame(driver.findElement(By.cssSelector("div.fanpage iframe")));
-		
-		String facebookLikeNumber = driver.findElement(By.xpath("//a[text()='Kyna.vn']/parent::div/following-sibling::div")).getText();
-		
-		Assert.assertEquals(facebookLikeNumber,"166K likes");
-		
+
+		// B (Element thuộc B)
+		String facebookLikeNumber = driver
+				.findElement(By.xpath("//a[text()='Kyna.vn']/parent::div/following-sibling::div")).getText();
+
+		Assert.assertEquals(facebookLikeNumber, "166K likes");
+
+		// B -> A (Element thuộc A)
 		driver.switchTo().defaultContent();
 
+		// A -> C
 		driver.switchTo().frame("cs_chat_iframe");
-		
+
+		// C (Element thuộc C)
 		driver.findElement(By.cssSelector("div.meshim_widget_Widget")).click();
 		sleepInSecond(3);
-		
+
 		driver.findElement(By.cssSelector("input.input_name")).sendKeys("Trang");
 		driver.findElement(By.cssSelector("input.input_phone")).sendKeys("0123456789");
 		new Select(driver.findElement(By.cssSelector("select#serviceSelect"))).selectByVisibleText("TƯ VẤN TUYỂN SINH");
 		driver.findElement(By.cssSelector("textarea[name='message']")).sendKeys("Course");
-		
+
+		// C -> A
 		driver.switchTo().defaultContent();
-		
-		String keyword = "Excel" ;
+
+		String keyword = "Excel";
+
+		// A (Element thuộc A)
 		driver.findElement(By.cssSelector("input#live-search-bar")).sendKeys(keyword);
 		driver.findElement(By.cssSelector("button.search-button")).click();
 		sleepInSecond(3);
-		
-		List<WebElement> courseNames =driver.findElements(By.cssSelector("div.content>h4"));
-		
+
+		// Verify
+		List<WebElement> courseNames = driver.findElements(By.cssSelector("div.content>h4"));
+
+		// Number
 		Assert.assertEquals(courseNames.size(), 9);
-		
+
 		for (WebElement course : courseNames) {
 			Assert.assertTrue(course.getText().contains(keyword));
-			
+
 		}
-		
-		
-		
-		
-		
+
 	}
 
 	@Test
-	public void TC_02_() {
+	public void TC_02_Fame() {
+		driver.get("https://netbanking.hdfcbank.com/netbanking/");
+		
+		driver.switchTo().frame("login_page");
+		
+		driver.findElement(By.cssSelector("input.form-control")).sendKeys("Trangphi");
+		driver.findElement(By.cssSelector("a.login-btn")).click();
+		sleepInSecond(3);
+		
+		WebElement passwordTextbox = driver.findElement(By.id("fldPasswordDispId"));
+		
+		Assert.assertTrue(passwordTextbox.isDisplayed());
+		
+		passwordTextbox.sendKeys("Trangphi96");
+		sleepInSecond(3);
+		
 
 	}
 
