@@ -51,13 +51,7 @@ public class Topic_17_Window_Tab {
 		
 		// Driver đang ở trang A
 		driver.findElement(By.xpath("//a[text()='FACEBOOK']")).click();
-		
-		
-		
-		
-		
-		
-		
+			
 	}
 
 	// Chỉ dùng cho duy nhất 2 tab/ windown
@@ -97,9 +91,6 @@ public class Topic_17_Window_Tab {
 			break;
 			
 		}
-		
-					
-					
 		
 				}
 
