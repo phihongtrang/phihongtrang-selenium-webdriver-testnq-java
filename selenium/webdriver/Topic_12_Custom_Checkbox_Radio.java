@@ -33,7 +33,7 @@ public class Topic_12_Custom_Checkbox_Radio {
 		driver.get("https://material.angular.io/components/radio/examples"); 
 		sleepInSecond(3);
 		jsExecutor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//mat-radio-button[@id='mat-radio-4']//span[@class='mat-radio-label-content']")));
-		Assert.assertEquals(driver.findElement(By.xpath("//mat-radio-button[@id='mat-radio-4']//span[@class='mat-radio-label-content']")
+		Assert.assertEquals(driver.findElement(By.xpath("//mat-radio-button[@id='mat-radio-4']//span[@class='mat-radio-label-content']")).getText(),"Summer");
 	}
 
 	@Test

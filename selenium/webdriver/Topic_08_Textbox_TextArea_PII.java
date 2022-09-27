@@ -34,20 +34,22 @@ public class Topic_08_Textbox_TextArea_PII {
 		driver.findElement(By.name("username")).sendKeys("Admin");
 		driver.findElement(By.name("password")).sendKeys("admin123");
 		driver.findElement(By.cssSelector("button.orangehrm-login-button")).click();
-	
+		
 	}
 
 	@Test
 	public void TC_02_Open_Add_Employee() {
 		driver.findElement(By.xpath("//a[text()='Add Employee']")).click();
+		
 		driver.findElement(By.name("firstName")).sendKeys(FirstName);
 		driver.findElement(By.name("lastName")).sendKeys(LastName);
 		
-		
+		sleepInSecond(8);
 		driver.findElement(By.xpath("//div[@class='oxd-form-actions']/button[@type='submit']")).click();
-		
-		Assert.assertEquals(driver.findElement(By.name("firstName")).getText(), "FirstName");
-		Assert.assertEquals(driver.findElement(By.name("lastName")).getText(), "LastName");
+
+		sleepInSecond(8);
+		Assert.assertEquals(driver.findElement(By.name("firstName")).getAttribute("value"), FirstName);
+		Assert.assertEquals(driver.findElement(By.name("lastName")).getAttribute("value"), LastName);
 		
 		
 		

@@ -119,11 +119,7 @@ public class Topic_17_Window_Tab {
 		
 		switchToWindowByTitle("Mobile");
 		driver.findElement(By.id("search")).sendKeys("Samsung Galaxy");
-		
-		
-		
-		
-		
+			
 	}
 	
 

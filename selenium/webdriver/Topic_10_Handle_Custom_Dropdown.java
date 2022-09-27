@@ -46,11 +46,11 @@ public class Topic_10_Handle_Custom_Dropdown {
 	// Chọn Item 10
 		selectItemInCustomDropdown("span#number-button","ul#number-menu>li>div","10");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#number-button>span.ui-selectmenu-text")).getText(), "10");
-		
+		driver.navigate().refresh();
 	// Chọn Item 5
 		selectItemInCustomDropdown("span#number-button","ul#number-menu>li>div","5");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#number-button>span.ui-selectmenu-text")).getText(), "5");
-		
+		driver.navigate().refresh();
 	// Chọn Item 15	
 		selectItemInCustomDropdown("span#number-button","ul#number-menu>li>div","15");
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#number-button>span.ui-selectmenu-text")).getText(), "15");

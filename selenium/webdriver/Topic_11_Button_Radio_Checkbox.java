@@ -21,7 +21,7 @@ public class Topic_11_Button_Radio_Checkbox {
 		driver = new FirefoxDriver();
 		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
+		driver.manage().window().maximize();
 	}
 
 	@Test
@@ -38,18 +38,41 @@ public class Topic_11_Button_Radio_Checkbox {
 		
 		Assert.assertTrue(driver.findElement(loginButtonBy).isEnabled());
 		
-		String loginButtonBackgroundHexa = Color.fromString(driver.findElement(loginButtonBy)).getCssValue("background-color").asHex().toUpperCase();
+		String loginButtonBackgroundHexa = Color.fromString(driver.findElement(loginButtonBy).getCssValue("background-color")).asHex().toUpperCase();
 		Assert.assertEquals(loginButtonBackgroundHexa, "#C92127");
 		
-		
-		
-	
+		System.out.println(driver.findElement(loginButtonBy).getCssValue("background-color"));
+		System.out.println(Color.fromString(driver.findElement(loginButtonBy).getCssValue("background-color")));
+		System.out.println(Color.fromString(driver.findElement(loginButtonBy).getCssValue("background-color")).asHex());
+		System.out.println(Color.fromString(driver.findElement(loginButtonBy).getCssValue("background-color")).asHex().toUpperCase());
 	}
 
 	@Test
-	public void TC_02_() {
+	public void TC_02_Default_Radio_Checkbox() {
+		driver.get("https://demos.telerik.com/kendo-ui/checkbox/index");
+		
+		driver.findElement(By.cssSelector("input#eq5")).click();
+		sleepInSecond(3);
+		Assert.assertTrue(driver.findElement(By.cssSelector("input#eq5")).isSelected());
+		
+		driver.findElement(By.cssSelector("input#eq5")).click();
+		sleepInSecond(3);
+		Assert.assertFalse(driver.findElement(By.cssSelector("input#eq5")).isSelected());
+		
+		driver.get("http://demos.telerik.com/kendo-ui/styling/radios");
+		driver.findElement(By.cssSelector("input#engine3")).click();
+		sleepInSecond(3);
+		Assert.assertTrue(driver.findElement(By.cssSelector("input#engine3")).isSelected());
+		if (!driver.findElement(By.cssSelector("input#engine3")).isSelected()) {
+			driver.findElement(By.cssSelector("input#engine3")).click();
+			sleepInSecond(3);
+			
+		}
+		
+		Assert.assertTrue(driver.findElement(By.cssSelector("input#engine3")).isSelected());
 		
 	}
+	
 
 	@Test
 	public void TC_03_() {

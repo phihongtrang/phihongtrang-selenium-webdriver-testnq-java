@@ -176,6 +176,7 @@ public class Topic_07_Web_Element_PII {
 	@Test
 	public void TC_04_Mailchimp() {
 		driver.get("https://login.mailchimp.com/signup/");
+		sleepInSecond(5);
 		driver.findElement(By.id("email")).sendKeys("automation@gmail.com");
 		driver.findElement(By.id("new_username")).sendKeys("automation");
 		
@@ -225,6 +226,7 @@ public class Topic_07_Web_Element_PII {
 		Assert.assertFalse(driver.findElement(By.cssSelector("li.number-char.completed")).isDisplayed());
 		Assert.assertFalse(driver.findElement(By.cssSelector("li.special-char.completed")).isDisplayed());
 		Assert.assertFalse(driver.findElement(By.xpath("//li[@class='8-char completed']")).isDisplayed());
+		
 		
 	}
 	
