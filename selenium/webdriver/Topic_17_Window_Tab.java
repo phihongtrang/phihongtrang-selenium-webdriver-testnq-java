@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -26,7 +27,7 @@ public class Topic_17_Window_Tab {
 
 	}
 
-	@Test
+
 	public void TC_01_Bassic_Form() {
 		
 		// Driver đang ở trang A
@@ -97,9 +98,34 @@ public class Topic_17_Window_Tab {
 	}
 
 	@Test
-	public void TC_04_() {
-
+	public void TC_02_Windown_Tab_TechPanda() {
+		// Driver đamg ở trang mobile
+		driver.get("http://live.techpanda.org/index.php/mobile.html");
+		driver.findElement(By.xpath("//a[@title='Sony Xperia']/parent::h2/following-sibling::div[@class='actions']//a[text()='Add to Compare']")).click();
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText(), "The product Sony Xperia has been added to comparison list.");
+		
+		driver.findElement(By.xpath("//a[@title='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']//a[text()='Add to Compare']")).click();
+		Assert.assertEquals(driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText(), "The product Samsung Galaxy has been added to comparison list.");
+		
+		driver.findElement(By.xpath("//button[@title='Compare']")).click();
+		sleepInSecond(3);
+		
+		// Switch qua Windown Compare
+		switchToWindowByTitle("Products Comparison List - Magento Commerce");
+		Assert.assertTrue(driver.findElement(By.xpath("//h1[text()='Compare Products']")).isDisplayed());
+		
+		driver.findElement(By.xpath("//button[@title='Close Window']"));
+		sleepInSecond(3);
+		
+		switchToWindowByTitle("Mobile");
+		driver.findElement(By.id("search")).sendKeys("Samsung Galaxy");
+		
+		
+		
+		
+		
 	}
+	
 
 	@AfterClass
 	public void afterClass() {
