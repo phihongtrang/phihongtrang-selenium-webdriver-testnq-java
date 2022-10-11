@@ -72,7 +72,7 @@ public class Topic_19_Upload_Sendkey {
 	public void TC_02_Upload_Multiple_File_Time() {
 		driver.get("https://blueimp.github.io/jQuery-File-Upload/");
 
-		driver.findElement(By.cssSelector("input[type='file']")).sendKeys(laptopFilePath + "/n" + loveFilePath + "/n" + mealFilePath);
+		driver.findElement(By.cssSelector("input[type='file']")).sendKeys(laptopFilePath + "\n" + loveFilePath + "\n" + mealFilePath);
 
 		Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name' and text()= 'Laptop.jpg']")).isDisplayed());
 		Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name' and text()= 'Love.jpg']")).isDisplayed());

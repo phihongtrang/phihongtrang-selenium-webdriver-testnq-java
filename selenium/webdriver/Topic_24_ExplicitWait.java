@@ -122,7 +122,7 @@ public class Topic_24_ExplicitWait {
 				.visibilityOfElementLocated(By.cssSelector("div#rowUploadButton button.uploadButton")));
 
 		driver.findElement(By.cssSelector("input[type='file']"))
-				.sendKeys(laptopFilePath + "/n" + loveFilePath + "/n" + mealFilePath);
+				.sendKeys(laptopFilePath + "\n" + loveFilePath + "\n" + mealFilePath);
 
 		// Wait cho loading icon của từng file biến mất
 		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(
