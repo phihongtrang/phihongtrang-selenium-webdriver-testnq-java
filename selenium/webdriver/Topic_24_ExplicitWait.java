@@ -45,7 +45,7 @@ public class Topic_24_ExplicitWait {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_01_Visible() {
 
 		driver.get("https://automationfc.github.io/dynamic-loading/");
@@ -63,7 +63,7 @@ public class Topic_24_ExplicitWait {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_02_Invisible() {
 
 		driver.get("https://automationfc.github.io/dynamic-loading/");
@@ -82,7 +82,7 @@ public class Topic_24_ExplicitWait {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_03_Ajax_Loading() {
 
 		driver.get("https://demos.telerik.com/aspnet-ajax/ajaxloadingpanel/functionality/explicit-show-hide/defaultcs.aspx");
@@ -115,12 +115,14 @@ public class Topic_24_ExplicitWait {
 	public void TC_04_() {
 		driver.get("https://gofile.io/uploadFiles");
 		
+		explicitWait = new WebDriverWait(driver,45);
+		
 		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#rowUploadButton button.uploadButton")));
 		
-		driver.findElement(By.cssSelector("input[type='file'")).sendKeys(laptopFilePath + "/n" + loveFilePath + "/n" + mealFilePath);
+		driver.findElement(By.cssSelector("input[type='file']")).sendKeys(laptopFilePath + "/n" + loveFilePath + "/n" + mealFilePath);
 		
 		// Wait cho loading icon của từng file biến mất
-		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#rowUploadProgress-list div.progress")));
+		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("div#rowUploadProgress-list div.progress"))));
 		
 		// Wait cho Upload message thành công được visible
 		explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[text()='Your files have been successfully uploaded']")));
@@ -128,16 +130,20 @@ public class Topic_24_ExplicitWait {
 		// Verify message này displayed
 		Assert.assertTrue(driver.findElement(By.xpath("//h5[text()='Your files have been successfully uploaded']")).isDisplayed());
 		
-		// Wait cho Show file button được clickable
-		explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button#rowUploadSuccess-showFiles")));
+		// Wait + click cho Show file button được clickable
+		explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button#rowUploadSuccess-showFiles"))).click();
 		
-		// Click vào button Show file
-		driver.findElement(By.cssSelector("button#rowUploadSuccess-showFiles")).click();
+		// Wait + verify luôn: cho file name vs button download hiển thị
+	
+		Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" +laptop+ "']/parent::a/parent::div/following-sibling::div//button[@id='contentId-download']"))).isDisplayed());
+		Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" +love+ "']/parent::a/parent::div/following-sibling::div//button[@id='contentId-download']"))).isDisplayed());
+		Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" +meal+ "']/parent::a/parent::div/following-sibling::div//button[@id='contentId-download']"))).isDisplayed());
 		
+		// Wait + verify luôn: cho file name vs button play hiển thị
 		
-		
-		
-
+			Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" +laptop+ "']/parent::a/parent::div/following-sibling::div//button[contains(@class,'contentPlay')]"))).isDisplayed());
+			Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" +love+ "']/parent::a/parent::div/following-sibling::div//button[contains(@class,'contentPlay')]"))).isDisplayed());
+			Assert.assertTrue(explicitWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" +meal+ "']/parent::a/parent::div/following-sibling::div//button[contains(@class,'contentPlay')]"))).isDisplayed());
 	}
 
 	@AfterClass
