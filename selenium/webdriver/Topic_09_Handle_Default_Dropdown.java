@@ -24,6 +24,9 @@ public class Topic_09_Handle_Default_Dropdown {
 	public void beforeClass() {
 		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 		driver = new FirefoxDriver();
+		
+		// Tại vị trí này thì mới có brower bật lên thôi
+		// Chưa mở URL ra nên sẽ không new select ở beforeclass (hàm select tương tác với element chứ k phải tương tác với driver)
 
 		firstname = "Trang";
 		lastname = "Phi";
