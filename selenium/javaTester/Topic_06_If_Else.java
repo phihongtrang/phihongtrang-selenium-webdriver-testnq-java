@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import org.testng.annotations.Test;
 
-public class BaiTapJava1 {
+public class Topic_06_If_Else {
 
 	@Test
 	public void BT_01() {
@@ -18,9 +18,8 @@ public class BaiTapJava1 {
 		int Age = scAge.nextInt();
 
 		int n = 15;
-		int y = Age + n;
 
-		System.out.println("After 15 years, age of " + Name + " will be " + y);
+		System.out.println("After 15 years, age of " + Name + " will be " + (Age + n));
 	}
 
 	@Test
