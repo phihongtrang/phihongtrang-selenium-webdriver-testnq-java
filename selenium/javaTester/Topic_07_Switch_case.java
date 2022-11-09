@@ -5,9 +5,6 @@ import java.util.Scanner;
 import org.testng.annotations.Test;
 
 public class Topic_07_Switch_case {
-
-
-	
 	//@Test
 	public void BT_01() {
 		System.out.println("Nhập tháng");
@@ -40,7 +37,7 @@ public class Topic_07_Switch_case {
 		
 	}
 	
-	@Test
+	//@Test
 	public void BT_02() {
 		System.out.println("Nhập số");
 		Scanner scN = new Scanner(System.in);
@@ -71,6 +68,18 @@ public class Topic_07_Switch_case {
 		default:
 			break;
 		}
+	}
+	class ViDuVongLapForEach {
+		@Test
+		public void BT_03() {
+
+	        char[] mangKyTu = {'t', 'u', 'h', 'o', 'c'};
+	        
+	        // Vòng lặp for each
+	        for (char kytu: mangKyTu) {
+	            System.out.println(kytu);
+	        }
+	    }
 	}
 	
 }		
