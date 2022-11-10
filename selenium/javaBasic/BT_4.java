@@ -2,9 +2,9 @@ package javaBasic;
 
 import java.util.Scanner;
 
-public class BT_3 {
-	
-	   public static void main(String[] args)
+public class BT_4 {
+
+	public static void main(String[] args)
 	   {
 	      int n;
 	      int[] soNguyen;
@@ -19,15 +19,9 @@ public class BT_3 {
 	         System.out.println("Nhập vào số nguyên:");
 	         soNguyen[i] = sc.nextInt();
 	      }
-
-	      for (int i = 0; i < n; i++)
-
-	        ketQua += soNguyen[i];
-	         ketQua = ketQua/n;
 	      
-	   	  
-
-	      System.out.println("Trung bình cộng của các số nguyên là: " + ketQua);
+	    	  System.out.println("Các phần tử trong mảng theo thứ tự ngược lại: "  ); 
+	      }
+	     
 	   }
-}
 
