@@ -1,4 +1,4 @@
-package javaTester;
+package webdriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeClass;
 
-public class Topic_02_System {
+public class Topic_00_Template2 {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String osName = System.getProperty("os.name");
@@ -34,3 +34,7 @@ public class Topic_02_System {
 		driver.manage().window().maximize();
 	}
 }
+
+	
+
+
