@@ -72,7 +72,13 @@ public class Topic_13_Alert {
 	public void TC_04_Authentication_Alert() {
 		// Truyền trực tiếp Username/ Password vào chính Url này -> Tự động SignIn luôn
 		// http:// +Username: Password @ the-internet.herokuapp.com/basic_auth
-		driver.get("");
+		driver.get(passUserAndPassToUrl("http://the-internet.herokuapp.com/basic_auth", "admin", "admin"));
+
+	}
+
+	public String passUserAndPassToUrl(String url, String username, String password) {
+		String[] arrayUrl = url.split("//");
+		return arrayUrl[0] + "//" + username + ":" + password + "@" + arrayUrl[1];
 
 	}
 
