@@ -11,15 +11,14 @@ public class Topic_05_Multiple_Browser {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 
-
 	@Test
 	public void TC_01_Chorme() {
-		
+
 		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
-		
+
 		driver.get("https://www.facebook.com/");
-		
+
 		driver.quit();
 	}
 
@@ -28,9 +27,9 @@ public class Topic_05_Multiple_Browser {
 		// Setting OS hiểu được geckodriver => Giao tiếp với Browser
 		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
 		driver = new FirefoxDriver();
-		
+
 		driver.get("https://www.facebook.com/");
-		
+
 		driver.quit();
 	}
 
@@ -38,11 +37,11 @@ public class Topic_05_Multiple_Browser {
 	public void TC_03_Edge_Chromium() {
 		System.setProperty("webdriver.edge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
 		driver = new EdgeDriver();
-		
+
 		driver.get("https://www.facebook.com/");
-		
+
 		driver.quit();
-		
+
 	}
 
 	@AfterClass
